@@ -24,11 +24,11 @@
         android:layout_marginStart="150dp"
         android:layout_marginTop="58dp"
         android:background="#92AC77"
-        android:onClick="startgame"
+        android:onClick="startGame"
         android:text="START GAME"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:onClick="startgame" />
+        tools:onClick="startGame" />
 
     <Button
         android:id="@+id/button4"

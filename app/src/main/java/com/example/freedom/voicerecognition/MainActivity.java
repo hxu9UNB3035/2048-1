@@ -6,23 +6,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View ;
 import android.widget.Button ;
+import android.widget.CompoundButton;
 import android.widget.EditText ;
-import android.widget.Toast ;
-
-import com.iflytek.cloud.ErrorCode ;
-import com.iflytek.cloud.InitListener ;
-import com.iflytek.cloud.RecognizerResult ;
-import com.iflytek.cloud.SpeechConstant ;
-import com.iflytek.cloud.SpeechError ;
-import com.iflytek.cloud.SpeechUtility ;
-import com.iflytek.cloud.ui.RecognizerDialog ;
-import com.iflytek.cloud.ui.RecognizerDialogListener ;
-
-import org.json.JSONException ;
-import org.json.JSONObject ;
-
-import java.util.HashMap ;
-import java.util.LinkedHashMap ;
+import android.widget.Switch;
 
 
 import android.content.Context;
@@ -32,24 +18,29 @@ import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.freedom.voicerecognition.R;
 
 public class MainActivity extends Activity  {
 
     private static final String TAG = MainActivity.class .getSimpleName();
     private EditText et_input;
-    private Button btn_startspeech;
-
-    // 用HashMap存储听写结果
-    private HashMap<String, String> mIatResults = new LinkedHashMap<String , String>();
 
     private int score = 0;
     private TextView tvScore;
     private Button buttonNewGame;
-    private Button buttonConfirmDirection;
+
+    private Button buttonUp;
+    private Button buttonDown;
+    private Button buttonLeft;
+    private Button buttonRight;
+
+    private Switch buttonSound;
     private GameView gameView;
 
+    Boolean soundIsAvailable = true;
+
     private SoundPool soundPool;
-    private int soundId_newgame;
+    private int soundId_newGame;
     private int soundId_move;
 
     private WindowManager wm;
@@ -67,15 +58,13 @@ public class MainActivity extends Activity  {
 
     public void homeButton(View view){
         setContentView(R.layout.homepage);
-
-
     }
 
     public void introduction(View view){
         setContentView(R.layout.introduction);
     }
 
-    public void startgame(View view){
+    public void startGame(View view){
         setContentView(R.layout.activity_main);
     }
 
@@ -89,30 +78,60 @@ public class MainActivity extends Activity  {
 
         gameView = (GameView) findViewById(R.id.gameView);//游戏界面
 
-        buttonNewGame = (Button) findViewById(R.id.button_newgame);//新游戏
-        buttonConfirmDirection = (Button) findViewById(R.id.btn_confirm_direction);//确认方向
+        buttonNewGame = (Button) findViewById(R.id.button_newGame);//新游戏
+        buttonSound = (Switch) findViewById(R.id.button_Sound);
+
+        buttonUp = (Button) findViewById(R.id.button_up);
+        buttonDown = (Button) findViewById(R.id.button_down);
+        buttonLeft = (Button) findViewById(R.id.button_left);
+        buttonRight = (Button) findViewById(R.id.button_right);
 
 
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//新游戏按钮监听器
-                soundPool.play(soundId_newgame, 1, 1, 0, 0, 1);
+                if(soundIsAvailable == true)
+                    soundPool.play(soundId_newGame, 1, 1, 0, 0, 1);
                 gameView.startGame();
             }
         });
 
-        buttonConfirmDirection.setOnClickListener(new View.OnClickListener() {
+        buttonUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {//文本框输入方向
-                String direction = et_input.getText().toString();
-                if("up".equals(direction) ) {
-                    gameView.swipeUp();
-                } else if("down".equals(direction) ) {
-                    gameView.swipeDown();
-                } else if("left".equals(direction) ) {
-                    gameView.swipeLeft();
-                } else if("right".equals(direction) ) {
-                    gameView.swipeRight();
+            public void onClick(View view) {
+                gameView.swipeUp();
+            }
+        });
+
+        buttonDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameView.swipeDown();
+            }
+        });
+
+        buttonLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameView.swipeLeft();
+            }
+        });
+
+        buttonRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gameView.swipeRight();
+            }
+        });
+
+        buttonSound.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if(isChecked){
+                    // enable
+                    soundIsAvailable = true;
+                }else{
+                    soundIsAvailable = false;
                 }
             }
         });
@@ -144,7 +163,7 @@ public class MainActivity extends Activity  {
         });
 
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
-        soundId_newgame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
+        soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
         soundId_move = soundPool.load(this, R.raw.sound_move, 1);//语音移动
 
     }
@@ -166,7 +185,8 @@ public class MainActivity extends Activity  {
     }
 
     public void moveVoice() {
-        soundPool.play(soundId_move, 1, 1, 0, 0, 1);
+        if(soundIsAvailable == true)
+            soundPool.play(soundId_move, 1, 1, 0, 0, 1);
     }
 
     public int min_height_weight() {
