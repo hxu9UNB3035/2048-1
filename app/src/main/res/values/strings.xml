@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">2048Game</string>
+    <string name="score">Score：</string>
+    <string name="bestscore">Hightest Score</string>
+    <string name="newgame">NewGame</string>
+    <string name="homepage">homepage</string>
+    <string name="gamepage">gamepage</string>
+
+</resources>
