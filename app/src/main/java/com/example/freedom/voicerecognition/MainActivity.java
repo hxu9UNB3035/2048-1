@@ -92,13 +92,11 @@ public class MainActivity extends Activity  {
         buttonNewGame = (Button) findViewById(R.id.button_newgame);//新游戏
         buttonConfirmDirection = (Button) findViewById(R.id.btn_confirm_direction);//确认方向
 
-        //btn_startspeech = (Button) findViewById(R.id.btn_startspeech );//开始拼写
-        //btn_startspeech .setOnClickListener(this) ;
 
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//新游戏按钮监听器
-                //soundPool.play(soundId_newgame, 1, 1, 0, 0, 1);
+                soundPool.play(soundId_newgame, 1, 1, 0, 0, 1);
                 gameView.startGame();
             }
         });
@@ -146,10 +144,9 @@ public class MainActivity extends Activity  {
         });
 
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
-       // soundId_newgame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
+        soundId_newgame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
         soundId_move = soundPool.load(this, R.raw.sound_move, 1);//语音移动
 
-        //initSpeech() ;
     }
 
     public void clearScore() {//当前得分
@@ -182,107 +179,4 @@ public class MainActivity extends Activity  {
 
         return (Math.min(width, height) - 10) / 4;//根据手机屏幕得出每张卡片宽高
     }
-
-
-
-
-
-
-
-
-
-    /*private void initSpeech() {
-        // 将“ 5ee30bc1 ”替换成您申请的 APPID，申请地址： http://www.xfyun.cn
-        // 请勿在 “ =”与 appid 之间添加任务空字符或者转义符
-        SpeechUtility. createUtility( this, SpeechConstant. APPID + "=5ee30bc1" );
-    }
-
-    /*@Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btn_startspeech: //语音识别（把声音转文字）
-                startSpeechDialog();
-                break;
-            default:
-                break;
-        }
-
-    }*/
-    /*
-    private void startSpeechDialog() {
-        //1. 创建RecognizerDialog对象
-        RecognizerDialog mDialog = new RecognizerDialog(this, new MyInitListener()) ;
-        //2. 设置accent、 language等参数
-        mDialog.setParameter(SpeechConstant. LANGUAGE, "zh_cn" );// 设置中文
-        mDialog.setParameter(SpeechConstant. ACCENT, "mandarin" );
-        // 若要将UI控件用于语义理解，必须添加以下参数设置，设置之后 onResult回调返回将是语义理解
-        // 结果
-        // mDialog.setParameter("asr_sch", "1");
-        // mDialog.setParameter("nlp_version", "2.0");
-        //3.设置回调接口
-        mDialog.setListener( new MyRecognizerDialogListener()) ;
-        //4. 显示dialog，接收语音输入
-        mDialog.show() ;
-    }
-
-    class MyRecognizerDialogListener implements RecognizerDialogListener {
-
-        /**
-         * @param results
-         * @param isLast  是否说完了
-         */
-    //@Override
-        /*public void onResult(RecognizerResult results, boolean isLast) {
-            String result = results.getResultString(); //为解析的
-            showTip(result) ;
-            System. out.println(" No Parse :" + result);
-
-            String text = JsonParser.parseIatResult(result) ;//解析过后的
-            System. out.println(" After Parse :" + text);
-
-            String sn = null;
-            // 读取json结果中的 sn字段
-            try {
-                JSONObject resultJson = new JSONObject(results.getResultString()) ;
-                sn = resultJson.optString("sn" );
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            mIatResults .put(sn, text) ;//没有得到一句，添加到
-
-            StringBuffer resultBuffer = new StringBuffer();
-            for (String key : mIatResults.keySet()) {
-                resultBuffer.append(mIatResults .get(key));
-            }
-
-            et_input.setText(resultBuffer.toString());// 设置输入框的文本
-            et_input.setSelection(et_input.length()) ;//把光标定位末尾
-        }
-
-        @Override
-        public void onError(SpeechError speechError) {
-
-        }
-    }
-
-    /*class MyInitListener implements InitListener {
-
-        @Override
-        public void onInit(int code) {
-            if (code != ErrorCode.SUCCESS) {
-                showTip("defeat fail  ");
-            }
-
-        }
-    }
-
-    /**
-     * 语音识别
-     */
-
-   /* private void showTip (String data) {
-        Toast.makeText( this, data, Toast.LENGTH_SHORT).show() ;
-    }
-    */
 }
