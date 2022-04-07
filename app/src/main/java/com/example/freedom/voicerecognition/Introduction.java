@@ -31,7 +31,6 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
 public class Introduction extends Activity {
 
     private Button buttonBack;
