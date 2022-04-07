@@ -19,6 +19,7 @@ import android.widget.ImageView;
 
 
 
+
 public class Introduction extends Activity {
 
     private Button buttonBack;
@@ -76,9 +77,10 @@ public class Introduction extends Activity {
         Iv = (ImageView) findViewById(R.id.imageView1);
     }
 
+
     private GestureDetector.OnGestureListener onGestureListener
             = new GestureDetector.SimpleOnGestureListener() {
-        //当识别的收拾是滑动手势时回调onFinger方法
+
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {

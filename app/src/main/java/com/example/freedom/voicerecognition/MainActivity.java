@@ -23,6 +23,7 @@ import com.example.freedom.voicerecognition.R;
 
 public class MainActivity extends Activity {
 
+
     private static final String TAG = MainActivity.class.getSimpleName();
     private EditText et_input;
 
