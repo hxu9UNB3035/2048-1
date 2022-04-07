@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class Homepage extends Activity {
 
+
     private Button buttonStartGame;
     private Button buttonHelp;
 

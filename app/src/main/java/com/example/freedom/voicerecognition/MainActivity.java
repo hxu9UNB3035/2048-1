@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {//新游戏按钮监听器
+            public void onClick(View v) {
                 if(soundIsAvailable == true)
                     soundPool.play(soundId_newGame, 1, 1, 0, 0, 1);
                 gameView.startGame();
@@ -165,7 +165,7 @@ public class MainActivity extends Activity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {//语音输入方向
+            public void afterTextChanged(Editable s) {
                 String direction = s.toString();
                 if("up".equals(direction) ) {
                     gameView.swipeUp();
@@ -180,15 +180,15 @@ public class MainActivity extends Activity {
         });
 
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
-        soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
-        soundId_move = soundPool.load(this, R.raw.sound_move, 1);//语音移动
+        soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//voice new game
+        soundId_move = soundPool.load(this, R.raw.sound_move, 1);//voice mobile
     }
 
     public static MainActivity getMainActivity() {
         return mainActivity;
     }
 
-    public void clearScore() {//当前得分
+    public void clearScore() {
         score = 0;
         showScore();
     }
@@ -217,6 +217,6 @@ public class MainActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        return (Math.min(width, height) - 10) / 4;//根据手机屏幕得出每张卡片宽高
+        return (Math.min(width, height) - 10) / 4;//Calculate the width and height of each card according to the mobile phone screen
     }
 }

@@ -31,22 +31,23 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+
 public class Introduction extends Activity {
 
     private Button buttonBack;
-    // 定义保存ImageView的对象
+    // Define the object that holds the ImageView
     private ImageView Iv;
 
-    //定义手势检测器对象
+    //Define the gesture detector object
     private GestureDetector gestureDetector;
-    //定义图片的资源数组
+    //Define the resource array of the image
     private int[] ResId = new int[]{
             R.mipmap.picture_1_foreground,
             R.mipmap.picture_2_foreground,
             R.mipmap.picture_3_foreground,
             R.mipmap.picture_4_foreground
     };
-    //定义当前显示的图片的下标
+    //Defines the subscript of the currently displayed picture
     private int count = 0;
 
 
@@ -69,14 +70,14 @@ public class Introduction extends Activity {
     }
 
     private void setListener() {
-        //设置手势监听器的处理效果由onGestureListener来处理
+        //The processing effect of setting the gesture listener is handled by onGestureListener
         gestureDetector = new GestureDetector(Introduction.this,
                 onGestureListener);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        //当前Activity被触摸时回调
+        //Callback when the current Activity is touched
         return gestureDetector.onTouchEvent(event);
     }
 
@@ -87,18 +88,18 @@ public class Introduction extends Activity {
         Iv = (ImageView) findViewById(R.id.imageView3);
         Iv = (ImageView) findViewById(R.id.imageView4);
     }
-    //定义了GestureDetector的手势识别监听器
+
     private GestureDetector.OnGestureListener onGestureListener
             = new GestureDetector.SimpleOnGestureListener() {
         //当识别的收拾是滑动手势时回调onFinger方法
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
-            //得到滑动手势的其实和结束点的x，y坐标，并进行计算
+            //Get the x, y coordinates of the actual and end point of the swipe gesture, and calculate
             float x = e2.getX() - e1.getX();
             float y = e2.getY() - e1.getY();
 
-            //通过计算结果判断用户是向左滑动或者向右滑动
+            //Determine whether the user is swiping left or right by the calculation result
             if (x > 0) {
                 count++;
                 count %= 3;
@@ -106,14 +107,14 @@ public class Introduction extends Activity {
                 count--;
                 count = (count + 3) % 3;
             }
-            //切换imageview的图片
+
             changeImg();
             return true;
         }
     };
 
     public void changeImg() {
-        //设置当前位置的图片资源
+        //Set the image resource of the current location
         Iv.setImageResource(ResId[count]);
     }
 
