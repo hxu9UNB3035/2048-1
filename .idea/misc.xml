@@ -22,6 +22,11 @@
         <entry key="..\:/cs2063/2022winter/2048/app/src/main/res/mipmap-anydpi-v26/picture_2.xml" value="0.3675" />
         <entry key="..\:/cs2063/2022winter/2048/app/src/main/res/mipmap-anydpi-v26/picture_2_round.xml" value="0.3675" />
         <entry key="..\:/cs2063/2022winter/2048/app/src/main/res/mipmap-anydpi-v26/picture_3_round.xml" value="0.3675" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/P1_background.xml" value="0.196" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/picture_1_background.xml" value="0.196" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/homepage.xml" value="0.3451086956521739" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/introduction.xml" value="0.24169184290030213" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/mipmap-anydpi-v26/P1.xml" value="0.196" />
       </map>
     </option>
   </component>
@@ -67,7 +72,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
