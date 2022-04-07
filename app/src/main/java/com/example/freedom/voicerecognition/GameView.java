@@ -202,7 +202,7 @@ public class GameView extends GridLayout {//GridLayout
             checkFinish();
         }
     }
-    public void swipeUp() {//向上滑动
+    public void swipeUp() {
 
         boolean move = false;
 
@@ -238,7 +238,7 @@ public class GameView extends GridLayout {//GridLayout
             checkFinish();
         }
     }
-    public void swipeDown() {//向下滑动
+    public void swipeDown() {
 
         boolean move = false;
 
@@ -275,7 +275,7 @@ public class GameView extends GridLayout {//GridLayout
         }
     }
 
-    private void checkFinish() {//检查结束游戏
+    private void checkFinish() {
 
         boolean finish = true;
 
@@ -289,7 +289,7 @@ public class GameView extends GridLayout {//GridLayout
                         y<3 && cardsMap[x][y].equals(cardsMap[x][y+1])) {
 
                     finish = false;
-                    break ALL;//跳出所有循环
+                    break ALL;
                 }
             }
         }
