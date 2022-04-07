@@ -90,11 +90,7 @@ public class Introduction extends Activity {
 
     private GestureDetector.OnGestureListener onGestureListener
             = new GestureDetector.SimpleOnGestureListener() {
-<<<<<<< HEAD
         // gesture -> onFinger method
-=======
-
->>>>>>> bbe514259b09ce15c228ceb4a38f293d81dbba32
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX,
                                float velocityY) {
