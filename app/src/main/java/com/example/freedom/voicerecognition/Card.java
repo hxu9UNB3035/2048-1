@@ -11,12 +11,12 @@ public class Card extends FrameLayout {
         super(context);
 
         label = new TextView(getContext());
-        label.setTextSize(32);//文本大小
-        label.setBackgroundColor(0x33ffffff);//卡片界面背景
+        label.setTextSize(32);//text size
+        label.setBackgroundColor(0x33ffffff);//card background
         label.setGravity(Gravity.CENTER);
 
         //布局参数
-        LayoutParams lp = new LayoutParams(-1, -1);//填充满整个图形界面
+        LayoutParams lp = new LayoutParams(-1, -1);//Fill the entire GUI
         lp.setMargins(10, 10, 0, 0);
         addView(label, lp);
 
@@ -35,10 +35,10 @@ public class Card extends FrameLayout {
         if(num <= 0) {
             label.setText("");
         } else {
-            label.setText(num + "");//两卡片相加
+            label.setText(num + "");//two card add
         }
 
-        switch(num) {//设置不同数字的卡片的颜色
+        switch(num) {//Set the color of cards with different numbers
             case 0:
                 label.setBackgroundColor(0xffd1d2d3);
                 break;
@@ -83,7 +83,7 @@ public class Card extends FrameLayout {
 
     public boolean equals(Card o) {
         return getNum()==o.getNum();
-    }//判断卡片是否相同
+    }//Are the broken cards the same
 
     private TextView label;
 }

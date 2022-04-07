@@ -16,45 +16,38 @@
         android:minWidth="48dp"
         android:text="Back" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src="@mipmap/picture_1_foreground" />
+
 
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@mipmap/picture_2_foreground" />
+        android:src="@mipmap/img_2_foreground" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@mipmap/picture_3_foreground"
+        android:src="@mipmap/img_3_foreground"
 
         />
+
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:src="@mipmap/picture_4_foreground"
+        android:src="@mipmap/img_1_foreground"
 
         />
 
-    <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        android:text="The player succeeds after stacking to 2048, otherwise fails."
-        android:translationX="100dp"
-        android:translationY="580dp"
-        android:visibility="visible" />
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@mipmap/img_4_foreground" />
+
+
 
 </RelativeLayout>

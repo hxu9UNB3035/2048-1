@@ -66,16 +66,16 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {//创建布局
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState) ;
         setContentView(R.layout.activity_main);
 
-        tvScore = (TextView) findViewById(R.id.tvScore);//得分
-        et_input = (EditText) findViewById(R.id.et_input);//文本框
+        tvScore = (TextView) findViewById(R.id.tvScore);
+        et_input = (EditText) findViewById(R.id.et_input);
 
-        gameView = (GameView) findViewById(R.id.gameView);//游戏界面
+        gameView = (GameView) findViewById(R.id.gameView);
 
-        buttonNewGame = (Button) findViewById(R.id.button_newGame);//新游戏
+        buttonNewGame = (Button) findViewById(R.id.button_newGame);
         buttonHome = (Button) findViewById(R.id.button_home);
         buttonHelp = (Button) findViewById(R.id.button_help);
 
@@ -195,7 +195,7 @@ public class MainActivity extends Activity {
 
     public void showScore() {
         tvScore.setText(score+" ");
-    } //消除的卡片分数相加
+    }
 
     public int printScore() { return score; }//
 

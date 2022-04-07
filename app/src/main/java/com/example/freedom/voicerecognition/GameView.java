@@ -14,9 +14,9 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends GridLayout {//因为使用的布局是，GridLayout
+public class GameView extends GridLayout {//GridLayout
 
-    public GameView(Context context, AttributeSet attrs, int defStyle) {//传入三个构造方法
+    public GameView(Context context, AttributeSet attrs, int defStyle) {//Pass in three constructors
         super(context, attrs, defStyle);
         initGameView();
         addCards(card_width, card_width);
@@ -34,28 +34,28 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
         addCards(card_width, card_width);
     }
 
-    private void initGameView() {//初始化
+    private void initGameView() {
         setColumnCount(4);
-        setBackgroundColor(0xffbbada0);//设置背景颜色
+        setBackgroundColor(0xffbbada0);//set background color
 
-        setOnTouchListener(new View.OnTouchListener(){//设置监听器监听手指按下的位置和离开的位置
+        setOnTouchListener(new View.OnTouchListener(){//Set the listener to listen to the position where the finger is pressed and the position left
 
-            private float startX, startY, offsetX, offsetY;//记录手指按下的位置和离开的位置
+            private float startX, startY, offsetX, offsetY;//Record where the finger is pressed and where it is left off
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
                 switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN://手指放下
+                    case MotionEvent.ACTION_DOWN:
                         startX = event.getX();
                         startY = event.getY();
                         break;
-                    case MotionEvent.ACTION_UP://手指离开
+                    case MotionEvent.ACTION_UP:
                         offsetX = event.getX() - startX;
                         offsetY = event.getY() - startY;
 
-                        if(Math.abs(offsetX) > Math.abs(offsetY)) {//x轴的移动距离与y轴移动距离比较
-                            if(offsetX < -5) {//小于0 往左，误差范围-5
+                        if(Math.abs(offsetX) > Math.abs(offsetY)) {//Comparison of the moving distance of the x-axis and the moving distance of the y-axis
+                            if(offsetX < -5) {//Less than 0 to the left, the error range is -5
                                 swipeLeft();
                             } else if(offsetX > 5) {
                                 swipeRight();
@@ -78,14 +78,14 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {//自动获取屏幕大小
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {//Get screen size automatically
 
         super.onSizeChanged(w, h, oldw, oldh);
 
         startGame();
     }
 
-    private void addCards(int cardWidth, int cardHeight) {//加载卡片
+    private void addCards(int cardWidth, int cardHeight) {
 
         Card c;
 
@@ -100,9 +100,9 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
         }
     }
 
-    public void startGame() {  // 开始游戏
+    public void startGame() {
 
-        MainActivity.getMainActivity().clearScore();//先清理残局
+        MainActivity.getMainActivity().clearScore();
 
         for(int y = 0; y < 4; y++) {
             for(int x = 0; x < 4; x++) {
@@ -110,48 +110,48 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
             }
         }
 
-        addRandomNum();//每次随机产生2个随机数
+        addRandomNum();
         addRandomNum();
     }
 
-    private void addRandomNum() {//随机产生一个数字
+    private void addRandomNum() {
 
         emptyPoints.clear();
 
         for(int y = 0; y < 4; y++) {
             for(int x = 0; x < 4; x++) {
-                if(cardsMap[x][y].getNum() <= 0) {//往空卡片添加随机数
+                if(cardsMap[x][y].getNum() <= 0) {
                     emptyPoints.add(new Point(x, y));
                 }
             }
         }
 
-        Point p = emptyPoints.remove((int)(Math.random() * emptyPoints.size()));//强制类型转换
-        cardsMap[p.x][p.y].setNum(Math.random() > 0.1 ? 2 : 4);//随机产生2或4
+        Point p = emptyPoints.remove((int)(Math.random() * emptyPoints.size()));
+        cardsMap[p.x][p.y].setNum(Math.random() > 0.1 ? 2 : 4);
     }
 
-    public void swipeLeft() {//向左滑动
+    public void swipeLeft() {
 
-        boolean move = false;//默认不添加随机数字
+        boolean move = false;
 
         for(int y = 0; y < 4; y++) {
-            for(int x = 0; x < 4; x++) {//数字循环左移
+            for(int x = 0; x < 4; x++) {
 
                 for(int x1 = x+1; x1 < 4; x1++) {
-                    if(cardsMap[x1][y].getNum() > 0) {//遇到相同数字就相加 数字不同则同时左移 直到本行最左边的一列数字到达左边界
+                    if(cardsMap[x1][y].getNum() > 0) {
 
                         if(cardsMap[x][y].getNum() <= 0) {
                             cardsMap[x][y].setNum(cardsMap[x1][y].getNum());
-                            cardsMap[x1][y].setNum(0);//不相同
+                            cardsMap[x1][y].setNum(0);
 
-                            x--;//避免特殊情况（右边数字与之前数字相同，但移动后该数字放到之前数字的位置但并没有合并）再遍历一遍
-                            move = true;//有移动就添加新的随机数
+                            x--;
+                            move = true;
                         } else if(cardsMap[x][y].equals(cardsMap[x1][y])) {
-                            cardsMap[x][y].setNum(cardsMap[x][y].getNum() * 2);//相同数字合并
-                            cardsMap[x1][y].setNum(0);//清除右边数字
+                            cardsMap[x][y].setNum(cardsMap[x][y].getNum() * 2);
+                            cardsMap[x1][y].setNum(0);
 
-                            MainActivity.getMainActivity().addScore(cardsMap[x][y].getNum());//合并之后计分
-                            move = true;//有移动就添加新的随机数
+                            MainActivity.getMainActivity().addScore(cardsMap[x][y].getNum());
+                            move = true;
                         }
 
                         break;
@@ -161,12 +161,12 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
         }
 
         if(move) {
-            MainActivity.getMainActivity().moveVoice();//合并就加分
-            addRandomNum();//有移动就添加新的随机数
-            checkFinish();//检查游戏是否结束
+            MainActivity.getMainActivity().moveVoice();
+            addRandomNum();
+            checkFinish();
         }
     }
-    public void swipeRight() {//向右滑动
+    public void swipeRight() {
 
         boolean move = false;
 
@@ -282,8 +282,8 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
         ALL:
         for(int y = 0; y < 4; y++) {
             for(int x = 0; x < 4; x++) {
-                if(cardsMap[x][y].getNum() == 0 ||  //判断是否还有空位置
-                        x>0 && cardsMap[x][y].equals(cardsMap[x-1][y]) ||  //判断四个方向上是否有相同数字
+                if(cardsMap[x][y].getNum() == 0 ||
+                        x>0 && cardsMap[x][y].equals(cardsMap[x-1][y]) ||
                         x<3 && cardsMap[x][y].equals(cardsMap[x+1][y]) ||
                         y>0 && cardsMap[x][y].equals(cardsMap[x][y-1]) ||
                         y<3 && cardsMap[x][y].equals(cardsMap[x][y+1])) {
@@ -301,14 +301,14 @@ public class GameView extends GridLayout {//因为使用的布局是，GridLayou
                     .setPositiveButton("Reset", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            startGame(); //重新开始一局
+                            startGame(); //reset
                         }})
                     .setCancelable(false)
                     .show();
         }
     }
 
-    private Card[][] cardsMap = new Card[4][4];//二维数组 记录16个卡片的值
+    private Card[][] cardsMap = new Card[4][4];
     private List<Point> emptyPoints = new ArrayList<Point>();
     private int card_width = MainActivity.getMainActivity().min_height_weight();
     EditText et_input;

@@ -23,9 +23,13 @@
         <entry key="..\:/cs2063/2022winter/2048/app/src/main/res/mipmap-anydpi-v26/picture_2_round.xml" value="0.3675" />
         <entry key="..\:/cs2063/2022winter/2048/app/src/main/res/mipmap-anydpi-v26/picture_3_round.xml" value="0.3675" />
         <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/P1_background.xml" value="0.196" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/img_1_background.xml" value="0.1395" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/img_3_background.xml" value="0.1395" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/img_4_background.xml" value="0.1395" />
         <entry key="..\:/cs3035/2048-1/app/src/main/res/drawable/picture_1_background.xml" value="0.196" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
         <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/homepage.xml" value="0.3451086956521739" />
-        <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/introduction.xml" value="0.24169184290030213" />
+        <entry key="..\:/cs3035/2048-1/app/src/main/res/layout/introduction.xml" value="0.1532567049808429" />
         <entry key="..\:/cs3035/2048-1/app/src/main/res/mipmap-anydpi-v26/P1.xml" value="0.196" />
       </map>
     </option>
