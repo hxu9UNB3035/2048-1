@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<<<<<<< HEAD
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+=======
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> bbe514259b09ce15c228ceb4a38f293d81dbba32
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
     android:layout_width="fill_parent"

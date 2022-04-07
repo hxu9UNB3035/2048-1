@@ -5,6 +5,7 @@ import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+
 public class Card extends FrameLayout {
 
     public Card(Context context) {
