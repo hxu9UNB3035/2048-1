@@ -1,6 +1,7 @@
 package com.example.freedom.voicerecognition;
 
 import android.app.Activity ;
+import android.content.Intent;
 import android.os.Bundle ;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,14 +21,17 @@ import android.widget.TextView;
 
 import com.example.freedom.voicerecognition.R;
 
-public class MainActivity extends Activity  {
+public class MainActivity extends Activity {
 
-    private static final String TAG = MainActivity.class .getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     private EditText et_input;
 
     private int score = 0;
     private TextView tvScore;
+
     private Button buttonNewGame;
+    private Button buttonHome;
+    private Button buttonHelp;
 
     private Button buttonUp;
     private Button buttonDown;
@@ -35,6 +39,7 @@ public class MainActivity extends Activity  {
     private Button buttonRight;
 
     private Switch buttonSound;
+
     private GameView gameView;
 
     Boolean soundIsAvailable = true;
@@ -48,16 +53,8 @@ public class MainActivity extends Activity  {
 
     private static MainActivity mainActivity = null;
 
-    public static MainActivity getMainActivity() {
-        return mainActivity;
-    }
-
     public MainActivity() {
         mainActivity = this;
-    }
-
-    public void homeButton(View view){
-        setContentView(R.layout.homepage);
     }
 
     public void introduction(View view){
@@ -70,7 +67,7 @@ public class MainActivity extends Activity  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {//创建布局
-        super .onCreate(savedInstanceState) ;
+        super.onCreate(savedInstanceState) ;
         setContentView(R.layout.activity_main);
 
         tvScore = (TextView) findViewById(R.id.tvScore);//得分
@@ -79,12 +76,15 @@ public class MainActivity extends Activity  {
         gameView = (GameView) findViewById(R.id.gameView);//游戏界面
 
         buttonNewGame = (Button) findViewById(R.id.button_newGame);//新游戏
-        buttonSound = (Switch) findViewById(R.id.button_Sound);
+        buttonHome = (Button) findViewById(R.id.button_home);
+        buttonHelp = (Button) findViewById(R.id.button_help);
 
         buttonUp = (Button) findViewById(R.id.button_up);
         buttonDown = (Button) findViewById(R.id.button_down);
         buttonLeft = (Button) findViewById(R.id.button_left);
         buttonRight = (Button) findViewById(R.id.button_right);
+
+        buttonSound = (Switch) findViewById(R.id.button_Sound);
 
 
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
@@ -93,6 +93,22 @@ public class MainActivity extends Activity  {
                 if(soundIsAvailable == true)
                     soundPool.play(soundId_newGame, 1, 1, 0, 0, 1);
                 gameView.startGame();
+            }
+        });
+
+        buttonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Homepage.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Introduction.class);
+                startActivity(intent);
             }
         });
 
@@ -136,6 +152,7 @@ public class MainActivity extends Activity  {
             }
         });
 
+
         et_input.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -165,7 +182,10 @@ public class MainActivity extends Activity  {
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
         soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//语音 新游戏
         soundId_move = soundPool.load(this, R.raw.sound_move, 1);//语音移动
+    }
 
+    public static MainActivity getMainActivity() {
+        return mainActivity;
     }
 
     public void clearScore() {//当前得分
