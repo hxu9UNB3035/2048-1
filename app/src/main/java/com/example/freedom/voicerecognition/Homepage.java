@@ -12,6 +12,7 @@ public class Homepage extends Activity {
 
     private Button buttonStartGame;
     private Button buttonHelp;
+    private Button buttonLeadBoard;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState) ;
@@ -20,7 +21,7 @@ public class Homepage extends Activity {
 
         buttonStartGame = (Button) findViewById(R.id.button_StartGame);
         buttonHelp = (Button) findViewById(R.id.button_Help);
-
+        buttonLeadBoard = (Button) findViewById(R.id.button_Leaderboarder);
         buttonStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,5 +37,14 @@ public class Homepage extends Activity {
                 startActivity(intent);
             }
         });
+        buttonLeadBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Homepage.this, LeadBoard.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
