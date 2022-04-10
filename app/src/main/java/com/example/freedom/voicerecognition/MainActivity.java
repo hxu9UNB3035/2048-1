@@ -58,14 +58,6 @@ public class MainActivity extends Activity {
         mainActivity = this;
     }
 
-    public void introduction(View view){
-        setContentView(R.layout.introduction);
-    }
-
-    public void startGame(View view){
-        setContentView(R.layout.activity_main);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState) ;
@@ -88,6 +80,7 @@ public class MainActivity extends Activity {
         buttonSound = (Switch) findViewById(R.id.button_Sound);
 
 
+        // buttons listeners
         buttonNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -181,8 +174,8 @@ public class MainActivity extends Activity {
         });
 
         soundPool = new SoundPool(10, AudioManager.STREAM_SYSTEM, 5);
-        soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//voice new game
-        soundId_move = soundPool.load(this, R.raw.sound_move, 1);//voice mobile
+        soundId_newGame = soundPool.load(this, R.raw.sound_newgame, 1);//sound of press newGame
+        soundId_move = soundPool.load(this, R.raw.sound_move, 1);//sound of moving
     }
 
     public static MainActivity getMainActivity() {
@@ -194,11 +187,11 @@ public class MainActivity extends Activity {
         showScore();
     }
 
-    public void showScore() {
+    public void showScore() { // current scores
         tvScore.setText(score+" ");
     }
 
-    public int printScore() { return score; }//
+    public int printScore() { return score; }
 
     public void addScore(int s) {
         score += s;
@@ -218,6 +211,6 @@ public class MainActivity extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        return (Math.min(width, height) - 10) / 4;//Calculate the width and height of each card according to the mobile phone screen
+        return (Math.min(width, height) - 10) / 4; //Calculate the width and height of each card according to the mobile phone screen
     }
 }

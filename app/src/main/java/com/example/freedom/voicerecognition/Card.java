@@ -16,7 +16,6 @@ public class Card extends FrameLayout {
         label.setBackgroundColor(0x33ffffff);//card background
         label.setGravity(Gravity.CENTER);
 
-        //布局参数
         LayoutParams lp = new LayoutParams(-1, -1);//Fill the entire GUI
         lp.setMargins(10, 10, 0, 0);
         addView(label, lp);
