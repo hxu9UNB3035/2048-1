@@ -5,6 +5,7 @@ package com.example.freedom.voicerecognition;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -15,8 +16,11 @@ import android.widget.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends GridLayout {//GridLayout
+public class GameView extends GridLayout {
 
+    int currentScores = 0;
+
+    //GridLayout
     public GameView(Context context, AttributeSet attrs, int defStyle) {//Pass in three constructors
         super(context, attrs, defStyle);
         initGameView();
@@ -277,7 +281,6 @@ public class GameView extends GridLayout {//GridLayout
     }
 
     private void checkFinish() {
-
         boolean finish = true;
 
         ALL:
@@ -299,6 +302,12 @@ public class GameView extends GridLayout {//GridLayout
             new AlertDialog.Builder(getContext())
                     .setTitle("Game Over！！！")
                     .setMessage("Final Score " + MainActivity.getMainActivity().printScore() + " #")
+                    .setNeutralButton("Save Scores", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.getMainActivity().saveScore();
+                            startGame();
+        }})
                     .setPositiveButton("Reset", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

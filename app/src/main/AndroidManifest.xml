@@ -23,6 +23,9 @@ android:versionName="1.0" >
     <activity android:name=".Introduction"
         android:label="@string/app_name">
     </activity>
+    <activity android:name=".LeaderBoard"
+        android:label="@string/app_name">
+    </activity>
 </application>
 
 <uses-permission android:name="android.permission.RECORD_AUDIO" />

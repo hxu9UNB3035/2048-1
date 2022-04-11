@@ -48,7 +48,7 @@ public class Introduction extends Activity {
         setContentView(R.layout.introduction);
 
 
-        buttonBack = (Button) findViewById(R.id.button_back);
+        buttonBack = (Button) findViewById(R.id.button_back2);
 
         pageNum = (TextView) findViewById(R.id.page_num);
 
@@ -119,7 +119,7 @@ public class Introduction extends Activity {
         if(ResId[count] == R.mipmap.img_4_foreground)
             pageNum.setText(""+1);
         else if (ResId[count] == R.mipmap.img_2_foreground)
-                pageNum.setText(""+2);
+            pageNum.setText(""+2);
         else if (ResId[count] == R.mipmap.img_3_foreground)
             pageNum.setText(""+3);
         else if (ResId[count] == R.mipmap.img_1_foreground)
