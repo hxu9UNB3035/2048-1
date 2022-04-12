@@ -12,3 +12,6 @@ Supported API levels:
 Test cases / test plans run:
 Testing our application, Home, Play, Introduction and Leaderboard interface, any buttons that exist on the interface. Drag the picture to see the game rules and try to play the game by touching the screen, typing, and pressing the directional buttons. Check if the final score is uploaded to the leaderboard. Testing the sound control button to see if it can control the switch sound normally (When the game is over, you can choose to save the score so that you will come to the leaderboard interface. Your score will be recorded, and then you can return to the game to continue playing. When the game ends again, choose to save the score and the score will be ranked according to the high and low). If there is a chance, we will add a voice recognition function
 
+Before submitting this project, we tested the application, and all functions can run normally.
+
+
