@@ -5,6 +5,7 @@ android {
     defaultConfig {
         applicationId "com.example.freedom.voicerecognition"
         minSdkVersion 26
+        //If here get error, the program can still works (because 26 small than 31)
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
