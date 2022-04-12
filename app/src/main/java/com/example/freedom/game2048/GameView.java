@@ -1,11 +1,10 @@
-package com.example.freedom.voicerecognition;
+package com.example.freedom.game2048;
 
 
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Point;
 import android.util.AttributeSet;
 import android.view.MotionEvent;

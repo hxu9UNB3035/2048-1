@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.example.freedom.voicerecognition"
+package="com.example.freedom.game2048"
 android:versionCode="1"
 android:versionName="1.0" >
 
 <application
     android:label="@string/app_name" >
     <activity
-        android:name="com.example.freedom.voicerecognition.Homepage"
+        android:name="com.example.freedom.game2048.Homepage"
         android:label="@string/app_name" >
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -15,13 +15,13 @@ android:versionName="1.0" >
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-    <activity android:name=".MainActivity"
+    <activity android:name="com.example.freedom.game2048.MainActivity"
         android:label="@string/app_name">
     </activity>
-    <activity android:name=".Introduction"
+    <activity android:name="com.example.freedom.game2048.Introduction"
         android:label="@string/app_name">
     </activity>
-    <activity android:name=".LeaderBoard"
+    <activity android:name="com.example.freedom.game2048.LeaderBoard"
         android:label="@string/app_name">
     </activity>
 

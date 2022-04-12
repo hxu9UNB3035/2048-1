@@ -1,4 +1,4 @@
-package com.example.freedom.voicerecognition;
+package com.example.freedom.game2048;
 
 import android.os.Bundle;
 
