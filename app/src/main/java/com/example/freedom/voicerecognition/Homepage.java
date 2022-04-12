@@ -39,7 +39,7 @@ public class Homepage extends Activity {
         buttonLeadBoard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Homepage.this, LeadBoard.class);
+                Intent intent = new Intent(Homepage.this, LeaderBoard.class);
                 startActivity(intent);
             }
         });
